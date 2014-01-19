@@ -29,7 +29,8 @@ function safe_copy () {
 
 function do_debian ()
 {
-  git 
+  # vim, vim-ctags, vim-cscope configurations 
+  sudo apt-get install vim ctags cscope
   safe_copy vim-debian/.vimrc ~/.vimrc
 }
 
