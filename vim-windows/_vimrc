@@ -1,0 +1,33 @@
+syntax on
+filetype on
+
+set enc=cp949
+set fenc=utf-8
+set fencs=utf-8,cp949
+
+set showmatch
+set ignorecase
+set smartcase
+set incsearch
+set mouse=a
+
+set cindent
+set autoindent
+set smartindent
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
+set cursorline
+
+set number
+set ruler
+
+"set backspace=2,indent,eol,start
+set backspace=2
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+"set guifont=Fantasque_Sans_Mono:h12:cANSI
+"set guifont=BPMono:h10
+"set guifont=D2Coding:h10:cANSI
+set guifont=Fira_Mono:h10:cANSI
+colorscheme torte
