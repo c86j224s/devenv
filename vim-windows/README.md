@@ -1,22 +1,24 @@
-# install chocolatey
+# Install Guide
 
-# install sudo
-## cinst -y sudo
+1. install chocolatey
 
-# install git
-## sudo cinst -y git
+2. install sudo
+  * cinst -y sudo
 
-# install ctags
-## sudo cinst -y ctags
+3. install git
+  * `sudo cinst -y git`
 
-# install vim
+4. install ctags
+  * `sudo cinst -y ctags`
 
-# git clone https://github.com/VundleVim/Vundle.vim.git .vim/bundle/vundle/
-## path : %userprofile%
+5. install vim
 
-# copy this _vimrc to %userprofile%
+6. `git clone https://github.com/VundleVim/Vundle.vim.git .vim/bundle/vundle/`
+  * path : %userprofile%
 
-# run below
-## vim +PluginInstall +qall
+7. copy this _vimrc to %userprofile%
+
+8. run below
+  * `vim +PluginInstall +qall`
 
 

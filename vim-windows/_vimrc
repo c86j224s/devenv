@@ -26,6 +26,8 @@ let Tlist_Use_Right_Window = 1
 
 Plugin 'fatih/vim-go'
 
+Plugin 'JamshedVesuna/vim-markdown-preview'
+
 
 
 filetype plugin indent on
