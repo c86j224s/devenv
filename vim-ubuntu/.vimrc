@@ -29,9 +29,10 @@ Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 
-
 Plugin 'JamshedVesuna/vim-markdown-preview'
 
+Plugin 'osyo-manga/vim-over'
+" nnoremap <silent><leader>m :OverCommandLine<cr>%s/
 
 
 filetype plugin indent on
