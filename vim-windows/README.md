@@ -22,3 +22,10 @@
   * `vim +PluginInstall +qall`
 
 
+# Optional Guide for Rust
+
+1. clone Rust source code from GitHub
+  * `git clone https://github.com/rust-lang/rust.git %userprofile%\rust`
+
+2. set env variable RUST_SRC_PATH
+  * `set RUST_SRC_PATH=%userprofile%\rust`

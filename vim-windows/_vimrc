@@ -38,6 +38,9 @@ Plugin 'osyo-manga/vim-over'
 " plugins for rust
 Plugin 'rust-lang/rust.vim'
 
+Plugin 'racer-rust/vim-racer'
+set hidden
+
 
 filetype plugin indent on
 
@@ -57,6 +60,7 @@ set hi=100
 set bs=indent,eol,start
 
 " set encoding
+"set enc=utf-8,cp949
 set fenc=utf-8
 " set fenc=utf-8,cp949,cp932,euc-jp,shift-jis,big5,ucs-2le,latin1
 
@@ -110,5 +114,5 @@ sy enable
 set cursorline
 
 " set themes
-se gfn=Liberation_Mono:b:h10
+se gfn=Dina:h9
 colors torte
