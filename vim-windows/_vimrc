@@ -23,6 +23,8 @@ let Tlist_Exit_OnlyWindow = 0
 let Tlist_Auto_Open = 0
 let Tlist_Use_Right_Window = 1
 
+" plugins for colors
+Plugin 'altercation/vim-colors-solarized'
 
 " plugins for go
 Plugin 'fatih/vim-go'
@@ -40,6 +42,15 @@ Plugin 'rust-lang/rust.vim'
 
 Plugin 'racer-rust/vim-racer'
 set hidden
+
+Plugin 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 
 
 filetype plugin indent on
@@ -114,5 +125,9 @@ sy enable
 set cursorline
 
 " set themes
-se gfn=Dina:h9
-colors torte
+"se gfn=Cousine:b:h10
+se gfn=Menlo:h10
+if has('gui_running')
+    set background=light
+    colors solarized
+endif
