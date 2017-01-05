@@ -3,6 +3,8 @@ filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+" set rtp+=%userprofile%/.vim/bundle/Vundle.vim/
+" call vundle#begin('%userprofile%/.vim/bundle')
 
 Bundle 'gmarik/vundle'
 
@@ -124,22 +126,23 @@ set expandtab
 " turnon syntax highlight by file ext
 sy enable
 
-" highlight cursorline
-if has('gui_running')
-    set cursorline
-endif
-
-" hilight colorcolumn
-"set cc=51,81,121
-"hilight ColorColumn ctermbg=17 guibg=navyblue
-let &colorcolumn=join(range(81,999),",")
-
 " set themes
 if has('gui_running')
     set background=light
     "colors evening
     colors torte
 endif
+
+" highlight cursorline
+set cursorline
+
+" hilight colorcolumn
+"set cc=51,81,121
+"hilight ColorColumn ctermbg=17 guibg=navyblue
+let &colorcolumn=join(range(81,999),",")
+hi ColorColumn guibg=#000020 ctermbg=17
+
+
 "se gfn=Liberation_Mono:b:h10
 "se gfn=D2Coding:h10
 "se guifont=CPMono_v07Plain:h10:cANSI:qDRAFT
