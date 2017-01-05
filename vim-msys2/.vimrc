@@ -21,20 +21,13 @@ let Tlist_Exit_OnlyWindow = 0
 let Tlist_Auto_Open = 0
 let Tlist_Use_Right_Window = 1
 
+Plugin 'valloric/YouCompleteMe'
+
 " plugins for colors
 Plugin 'altercation/vim-colors-solarized'
 
-"Plugin 'mattn/vimtweak'
-"Plugin 'mattn/transparency-windows-vim'
-
-"Plugin 'https://github.com/powerline/powerline.git'
-"set rtp+=%userprofile%/.vim/bundle/powerline/powerline/bindings/vim
-"let g:Powerline_symbols = 'fancy'
-set ls=2
-
 " plugins for go
 Plugin 'fatih/vim-go'
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 
 Plugin 'JamshedVesuna/vim-markdown-preview'
@@ -48,11 +41,14 @@ Plugin 'rust-lang/rust.vim'
 
 Plugin 'racer-rust/vim-racer'
 set hidden
+let g:racer_cmd="/C/Users/c86j224s/.cargo/bin/racer.exe"
+let $RUST_SRC_PATH="~/github/rust/src"
+let g:racer_experimental_completer = 1
 
 Plugin 'scrooloose/syntastic'
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -121,6 +117,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
+" show always status line
+set ls=2
+
 " turnon syntax highlight by file ext
 sy enable
 
@@ -129,31 +128,10 @@ if has('gui_running')
     set cursorline
 endif
 
-" hilight colorcolumn
-"set cc=51,81,121
-"hilight ColorColumn ctermbg=17 guibg=navyblue
-let &colorcolumn=join(range(81,999),",")
-
 " set themes
+"se gfn=Cousine:b:h10
+se gfn=Menlo:h10
 if has('gui_running')
     set background=light
-    "colors evening
-    colors torte
+    colors solarized
 endif
-"se gfn=Liberation_Mono:b:h10
-"se gfn=D2Coding:h10
-"se guifont=CPMono_v07Plain:h10:cANSI:qDRAFT
-"se gfn=Dejavu_Sans_Mono:h10
-"se gfn=Consolas:h10
-"se gfn=Courier_New:h10
-"se gfn=Consolas:b:h10.2
-"se gfn=Source_Code_Pro_Medium:h10
-"se gfn=Courier:h10
-"se gfn=Menlo:h10
-"se gfn=IBM_3270:h13:cANSI:qDRAFT
-"se gfn=Fixedsys:h12
-"se gfn=NetTerm_ANSI:h12:cANSI:qDRAFT
-"se gfn=Fira_Mono_Medium:h10:cANSI:qDRAFT
-"se gfn=Hack:h10:b:cANSI:qDRAFT
-"se gfn=Droid_Sans_Mono:h10:cANSI:qDRAFT
-"se gfn=ProFontWindows:h10:cANSI:qDRAFT
