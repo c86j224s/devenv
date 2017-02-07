@@ -1,6 +1,13 @@
 set nocompatible
 filetype off
 
+" set encoding
+"set enc=utf-8,cp949
+"se enc=utf-8
+"se fenc=utf-8
+"se langmenu=cp949
+" set fenc=utf-8,cp949,cp932,euc-jp,shift-jis,big5,ucs-2le,latin1
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 " set rtp+=%userprofile%/.vim/bundle/Vundle.vim/
@@ -25,13 +32,14 @@ let Tlist_Use_Right_Window = 1
 
 " plugins for colors
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'sickill/vim-monokai'
 
 "Plugin 'mattn/vimtweak'
 "Plugin 'mattn/transparency-windows-vim'
 
-"Plugin 'https://github.com/powerline/powerline.git'
-"set rtp+=%userprofile%/.vim/bundle/powerline/powerline/bindings/vim
-"let g:Powerline_symbols = 'fancy'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 set ls=2
 
 " plugins for go
@@ -78,10 +86,6 @@ set hi=100
 " use backspace
 set bs=indent,eol,start
 
-" set encoding
-"set enc=utf-8,cp949
-set fenc=utf-8
-" set fenc=utf-8,cp949,cp932,euc-jp,shift-jis,big5,ucs-2le,latin1
 
 " show always cursor position
 set ru
@@ -130,7 +134,10 @@ sy enable
 if has('gui_running')
     set background=light
     "colors evening
-    colors torte
+    "colors torte
+    "colors morning
+    "colors desert
+    colors monokai
 endif
 
 " highlight cursorline
@@ -142,7 +149,7 @@ set cursorline
 let &colorcolumn=join(range(81,999),",")
 hi ColorColumn guibg=#000020 ctermbg=17
 
-
+"fonts
 "se gfn=Liberation_Mono:b:h10
 "se gfn=D2Coding:h10
 "se guifont=CPMono_v07Plain:h10:cANSI:qDRAFT
@@ -157,6 +164,15 @@ hi ColorColumn guibg=#000020 ctermbg=17
 "se gfn=Fixedsys:h12
 "se gfn=NetTerm_ANSI:h12:cANSI:qDRAFT
 "se gfn=Fira_Mono_Medium:h10:cANSI:qDRAFT
-"se gfn=Hack:h10:b:cANSI:qDRAFT
+se gfn=Hack:h10:b:cANSI:qDRAFT
 "se gfn=Droid_Sans_Mono:h10:cANSI:qDRAFT
 "se gfn=ProFontWindows:h10:cANSI:qDRAFT
+"se gfn=Inconsolata:h10:cANSI:qDRAFT
+"se gfn=Dina_TTF:h10
+"se gfn=Classic_Console:h16
+"se gfn=Lucida_Sans_Typewriter:h10
+
+"se linespace=3
+"se gfn=Fixedsys:h12
+"se guifontwide=Dalsebeol:h12
+
