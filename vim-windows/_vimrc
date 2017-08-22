@@ -18,6 +18,7 @@ Bundle 'gmarik/vundle'
 
 Plugin 'The-NERD-tree'
 nmap <F7> :NERDTreeToggle<CR>
+"let NERDTreeIgnore=['\c^ntuser\..*']
 
 
 Plugin 'AutoComplPop'
@@ -156,7 +157,7 @@ hi ColorColumn guibg=#000020 ctermbg=17
 "se gfn=Dejavu_Sans_Mono:h10
 "se gfn=Consolas:h10
 "se gfn=Courier_New:h10
-"se gfn=Consolas:b:h10.2
+se gfn=Consolas:b:h10.2
 "se gfn=Source_Code_Pro_Medium:h10
 "se gfn=Courier:h10
 "se gfn=Menlo:h10
@@ -164,7 +165,7 @@ hi ColorColumn guibg=#000020 ctermbg=17
 "se gfn=Fixedsys:h12
 "se gfn=NetTerm_ANSI:h12:cANSI:qDRAFT
 "se gfn=Fira_Mono_Medium:h10:cANSI:qDRAFT
-se gfn=Hack:h10:b:cANSI:qDRAFT
+"se gfn=Hack:h10:b:cANSI:qDRAFT
 "se gfn=Droid_Sans_Mono:h10:cANSI:qDRAFT
 "se gfn=ProFontWindows:h10:cANSI:qDRAFT
 "se gfn=Inconsolata:h10:cANSI:qDRAFT
