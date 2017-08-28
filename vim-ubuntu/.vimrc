@@ -26,13 +26,36 @@ let Tlist_Use_Right_Window = 1
 
 " plugins for go
 Plugin 'fatih/vim-go'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 
 Plugin 'JamshedVesuna/vim-markdown-preview'
 
 Plugin 'osyo-manga/vim-over'
 " nnoremap <silent><leader>m :OverCommandLine<cr>%s/
+
+" Plugins for cscope
+Plugin 'brookhong/cscope.vim'
+
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+
+" s: Find this C symbol
+nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
+" g: Find this definition
+nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
+" d: Find functions called by this function
+nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
+" c: Find functions calling this function
+nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
+" t: Find this text string
+nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
+" e: Find this egrep pattern
+nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
+" f: Find this file
+nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
+" i: Find files #including this file
+nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 
 
 filetype plugin indent on
@@ -103,6 +126,16 @@ set ls=2
 " turnon syntax highlight by file ext
 sy enable
 
-colors torte
+" cscope
+set csprg=/usr/bin/cscope 
+set csto=0 
+set cst 
+set nocsverb 
+if filereadable("./cscope.out") 
+    cs add cscope.out 
+else 
+    cs add /usr/src/linux/cscope.out 
+endif 
+set csverb
 
-se gfn=Liberation_Mono_Bold_14
+
