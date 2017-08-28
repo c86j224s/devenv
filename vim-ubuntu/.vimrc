@@ -102,3 +102,7 @@ set ls=2
 
 " turnon syntax highlight by file ext
 sy enable
+
+colors torte
+
+se gfn=Liberation_Mono_Bold_14
