@@ -11,6 +11,7 @@ Bundle 'gmarik/vundle'
 
 Plugin 'The-NERD-tree'
 nmap <F7> :NERDTreeToggle<CR>
+let g:NERDTreeDirArrows=0
 
 
 Plugin 'AutoComplPop'
