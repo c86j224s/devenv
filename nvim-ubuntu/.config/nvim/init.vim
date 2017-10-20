@@ -29,6 +29,10 @@ Plugin 'osyo-manga/vim-over'
 
 Plugin 'brookhong/cscope.vim'
 
+Plugin 'racer-rust/vim-racer'
+
+Plugin 'autozimu/LanguageClient-neovim'
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " configurations for nerdtree plugin.
@@ -84,6 +88,35 @@ else
     cs add /usr/src/linux/cscope.out 
 endif 
 set csverb
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" configurations for racer
+
+"let g:racer_cmd = "/path/to/racer/bin"
+
+let g:racer_experimental_completer = 1
+
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" configurations for languageclient plugin.
+
+autocmd BufReadPost *.rs setlocal filetype=rust
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " common configurations
