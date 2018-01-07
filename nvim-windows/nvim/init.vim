@@ -33,6 +33,7 @@ call plug#end()
 
 nmap <F7> :NERDTreeToggle<CR>
 "let NERDTreeIgnore=['\c^ntuser\..*']
+let NERDTreeShowHidden=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " syntastic configurations
