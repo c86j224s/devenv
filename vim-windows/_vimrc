@@ -3,7 +3,7 @@ filetype off
 
 " set encoding
 "set enc=utf-8,cp949
-"se enc=utf-8
+se enc=utf-8
 "se fenc=utf-8
 "se langmenu=cp949
 " set fenc=utf-8,cp949,cp932,euc-jp,shift-jis,big5,ucs-2le,latin1
@@ -52,6 +52,29 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 
 Plugin 'osyo-manga/vim-over'
 " nnoremap <silent><leader>m :OverCommandLine<cr>%s/
+
+" Plugins for cscope
+Plugin 'brookhong/cscope.vim'
+
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+
+" s: Find this C symbol
+nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
+" g: Find this definition
+nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
+" d: Find functions called by this function
+nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
+" c: Find functions calling this function
+nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
+" t: Find this text string
+nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
+" e: Find this egrep pattern
+nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
+" f: Find this file
+nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
+" i: Find files #including this file
+nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 
 
 " plugins for rust
@@ -130,6 +153,13 @@ set expandtab
 
 " turnon syntax highlight by file ext
 sy enable
+
+"set cscopeprg=cscope
+"set csto=0
+"set cst
+"set nocsverb
+"cs add ./cscope.out
+"set csverb
 
 " set themes
 if has('gui_running')
