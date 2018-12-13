@@ -45,6 +45,7 @@ set ls=2
 
 " plugins for go
 Plugin 'fatih/vim-go'
+nmap <F12> :GoDef<CR>
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 
