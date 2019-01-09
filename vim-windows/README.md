@@ -29,3 +29,12 @@
 
 2. set env variable RUST_SRC_PATH
   * `set RUST_SRC_PATH=%userprofile%\rust`
+
+
+# Optional Guide for cscope & ctags
+
+1. ctags for windows
+  * url : http://ctags.sourceforge.net/
+
+2. cscope for windows
+  * url : https://code.google.com/archive/p/cscope-win32/downloads
