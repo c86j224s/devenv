@@ -140,3 +140,4 @@ endif
 set csverb
 
 
+Plugin 'cocopon/iceberg.vim'
