@@ -35,6 +35,23 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'osyo-manga/vim-over'
 " nnoremap <silent><leader>m :OverCommandLine<cr>%s/
 
+""""""""""""""""""""""""""""""""""""""""
+" plugins for rust language server
+Plugin 'rust-lang/rust.vim'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+
+""""""""""""""""""""""""""""""""""""""""
 " Plugins for cscope
 Plugin 'brookhong/cscope.vim'
 
@@ -138,6 +155,5 @@ else
     cs add /usr/src/linux/cscope.out 
 endif 
 set csverb
-
 
 Plugin 'cocopon/iceberg.vim'
