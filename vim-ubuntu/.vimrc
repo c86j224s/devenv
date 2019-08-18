@@ -35,6 +35,8 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'osyo-manga/vim-over'
 " nnoremap <silent><leader>m :OverCommandLine<cr>%s/
 
+Plugin 'klen/python-mode'
+
 """"""""""""""""""""""""""""""""""""""""
 " plugins for rust language server
 Plugin 'rust-lang/rust.vim'
@@ -157,3 +159,7 @@ endif
 set csverb
 
 Plugin 'cocopon/iceberg.vim'
+
+"se guifont=Courier\ 10\ Pitch\ 14
+"se gfn=나눔고딕코딩\ 16
+se gfn=SF\ Mono\ Medium\ 13
