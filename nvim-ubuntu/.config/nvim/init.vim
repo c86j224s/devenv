@@ -1,6 +1,9 @@
 set nocompatible
 filetype off
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-plug configurations
+
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'joshdick/onedark.vim'
@@ -31,6 +34,9 @@ set termguicolors
 
 " set font
 set guifont=JetBrains\ Mono:h13
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" nerd tree configurations
 
 " map nerdtree as f7 key
 nmap <F7> :NERDTree<CR>
