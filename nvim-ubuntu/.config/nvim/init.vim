@@ -1,62 +1,41 @@
 set nocompatible
 filetype off
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Vundle configuration
+call plug#begin('~/.config/nvim/plugged')
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-" set rtp+=%userprofile%/.vim/bundle/Vundle.vim/
-" call vundle#begin('%userprofile%/.vim/bundle')
+Plug 'joshdick/onedark.vim'
+Plug 'iCyMind/NeoSolarized'
 
-Bundle 'gmarik/vundle'
+" disables vim-airline
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 
-Plugin 'The-NERD-tree'
+" a tree explorer for vim
+Plug 'scrooloose/nerdtree'
 
-Plugin 'AutoComplPop'
+Plug 'brookhong/cscope.vim'
 
-Plugin 'taglist-plus'
+" a git wrapper so awesome, it should be illegal
+Plug 'tpope/vim-fugitive'
 
-Plugin 'fatih/vim-go'
+" A Vim plugin which shows a git diff in the sign column.
+Plug 'airblade/vim-gitgutter'
 
-"Plugin 'Valloric/YouCompleteMe'
+" language server client
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
-Plugin 'majutsushi/tagbar'
+call plug#end()
 
-"Plugin 'JamshedVesuna/vim-markdown-preview'
+" use true color
+set termguicolors
 
-Plugin 'osyo-manga/vim-over'
+" set font
+set guifont=JetBrains\ Mono:h13
 
-Plugin 'brookhong/cscope.vim'
+" map nerdtree as f7 key
+nmap <F7> :NERDTree<CR>
 
-Plugin 'racer-rust/vim-racer'
-
-Plugin 'autozimu/LanguageClient-neovim'
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" configurations for nerdtree plugin.
-
-nmap <F7> :NERDTreeToggle<CR>
-let g:NERDTreeDirArrows=0
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" configurations for taglist plugin.
-
-nmap <F8> :TlistToggle<CR>
-let Tlist_Inc_Winwidth = 0
-let Tlist_Exit_OnlyWindow = 0
-let Tlist_Auto_Open = 0
-let Tlist_Use_Right_Window = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" configurations for vimover plugin.
-
-" nnoremap <silent><leader>m :OverCommandLine<cr>%s/
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" configurations for cscope plugin
-
+" for cscope ++++++++++++++++++++ begin
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
 nnoremap <leader>l :call ToggleLocationList()<CR>
 
@@ -76,8 +55,9 @@ nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
 nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
 " i: Find files #including this file
 nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
+" for cscope -------------------- end
 
-" cscope
+" for cscope extended ----------- begin
 set csprg=/usr/bin/cscope 
 set csto=0 
 set cst 
@@ -88,75 +68,92 @@ else
     cs add /usr/src/linux/cscope.out 
 endif 
 set csverb
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" configurations for racer
-
-"let g:racer_cmd = "/path/to/racer/bin"
-
-let g:racer_experimental_completer = 1
-
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" configurations for languageclient plugin.
-
-autocmd BufReadPost *.rs setlocal filetype=rust
-
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ }
-
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+" for cscope extended ----------- end
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" common configurations
+" for coc ----------------------- begin
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" use <c-space> for trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Formatting selected code
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s)
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Applying code actions to the selected code block
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying code actions at the cursor position
+nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+" Remap keys for apply code actions affect whole buffer
+nmap <leader>as  <Plug>(coc-codeaction-source)
+" Apply the most preferred quickfix action to fix diagnostic on the current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Remap keys for applying refactor code actions
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+
+" Run the Code Lens action on the current line
+nmap <leader>cl  <Plug>(coc-codelens-action)
+" for coc ----------------------- end
+
 
 filetype plugin indent on
 
+se enc=utf-8
+
 scripte utf-8
-
-" vim functions
-set nocp
-
-" recover options
-" set all&
-
-" commands history
-set hi=100
 
 " use backspace
 set bs=indent,eol,start
 
-" set encoding
-set fenc=utf-8
-" set fenc=utf-8,cp949,cp932,euc-jp,shift-jis,big5,ucs-2le,latin1
-
-" show always cursor position
-set ru
-
 " show command completing
 set sc
 
-" number line
+" show njumber line
 set nu
-
-" line width
-set nuw=5
 
 " indentation
 set smartindent
 set autoindent
-set cindent
 
 " magic feature
 set magic
@@ -166,7 +163,7 @@ set sel=exclusive
 
 " matching parenthesis
 set mps+=<:>
-set sm
+set smartindent
 
 " highlight searchcase
 set hlsearch
@@ -174,21 +171,18 @@ set hlsearch
 " ignore case in search
 set ignorecase
 
-" smart case check
-" set ic
-
 " tabs
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" show always status line
-set ls=2
-
-" turnon syntax highlight by file ext
+" turn on syntax highlight by file ext
 sy enable
 
-" highlight cursorline
+" auto reload file
+se autoread
+
+" highlight cursor line
 set cursorline
 
 " hilight colorcolumn
@@ -197,6 +191,5 @@ set cursorline
 let &colorcolumn=join(range(81,999),",")
 hi ColorColumn guibg=#000020 ctermbg=17
 
-colors desert
-"se gfn=Monospace\ 13
-
+" show file name in title
+set title
