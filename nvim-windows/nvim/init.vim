@@ -9,7 +9,8 @@ call plug#begin('~/.config/nvim')
 Plug 'joshdick/onedark.vim'
 Plug 'iCyMind/NeoSolarized'
 
-" disables vim-airline
+" disable vim-airline
+"  cause of not using buffers
 "Plug 'vim-airline/vim-airline'
 "Plug 'vim-airline/vim-airline-themes'
 
@@ -41,6 +42,11 @@ set guifont=JetBrains\ Mono:h13
 " map nerdtree as f7 key
 nmap <F7> :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
+
+" for airline +++++++++++++++++++ begin
+"   disables..
+" let g:airline#extensions#tabline#enabled = 1
+" for airline ------------------- end
 
 " for cscope ++++++++++++++++++++ begin
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
@@ -94,6 +100,11 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 " <C-g>u breaks current undo, please make your own choice
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " use <c-space> for trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -222,3 +233,7 @@ hi ColorColumn guibg=#000020 ctermbg=17
 
 " show file name in title
 set title
+
+" my key remap
+
+tnoremap <ESC> <C-\><C-n>
