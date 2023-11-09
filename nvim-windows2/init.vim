@@ -358,6 +358,7 @@ nmap <leader>sv :source $MYVIMRC<CR>
 " load environment-specific lua configurations --------------------------- begin
 
 " load configuration from lua/env/init.lua
+lua package.loaded.env = nil
 lua require('env')
 
 " load environment-speicifc lua configuration ------------------------------ end
