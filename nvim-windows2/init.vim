@@ -354,3 +354,10 @@ lua vim.opt.shell='pwsh'
 
 " reload vim configuration - sv means "source vimrc"
 nmap <leader>sv :source $MYVIMRC<CR>
+
+" load environment-specific lua configurations --------------------------- begin
+
+" load configuration from lua/env/init.lua
+lua require('env')
+
+" load environment-speicifc lua configuration ------------------------------ end
