@@ -2,3 +2,4 @@
     "coc.preferences.formatOnSaveFiletypes": ["rust"],
     "rust-analyzer.completion.autoimport.enable": true
 }
+
