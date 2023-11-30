@@ -350,7 +350,12 @@ endif
 tnoremap <ESC> <C-\><C-n>
 
 " change terminal emulator to pwsh
-lua vim.opt.shell='pwsh'
+set shell=pwsh.exe
+set shellxquote=
+let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '
+let &shellquote   = ''
+let &shellpipe    = '| Out-File -Encoding UTF8 %s'
+let &shellredir   = '| Out-File -Encoding UTF8 %s'
 
 " reload vim configuration - sv means "source vimrc"
 nmap <leader>sv :source $MYVIMRC<CR>
