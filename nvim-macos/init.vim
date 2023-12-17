@@ -1,26 +1,16 @@
+" lua configuration ------------------- begin
+
+lua require('setting')
+
+" lua configuration ------------------- end
+
 set nocompatible
 filetype off
 
-call plug#begin('~/.config/nvim/plugged')
-
-Plug 'joshdick/onedark.vim'
-Plug 'iCyMind/NeoSolarized'
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" a tree explorer for vim
-Plug 'scrooloose/nerdtree'
-
-Plug 'brookhong/cscope.vim'
-
-" a git wrapper so awesome, it should be illegal
-Plug 'tpope/vim-fugitive'
-
-" A Vim plugin which shows a git diff in the sign column.
-Plug 'airblade/vim-gitgutter'
-
-call plug#end()
+" LanguageClient configuration
+let g:LanguageClient_serverCommands = {
+\ 'rust': ['rust-analyzer'],
+\ }
 
 " use true color
 set termguicolors
